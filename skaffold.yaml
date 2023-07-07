@@ -1,0 +1,12 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: sample
+build:
+  artifacts:
+    - image: team/sample
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - target/classes/META-INF/dekorate/kubernetes.yml
