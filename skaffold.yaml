@@ -1,10 +1,15 @@
 apiVersion: skaffold/v4beta6
 kind: Config
 metadata:
-  name: sample
+  name: springboot-pipeline-java-
 build:
+  local:
+    push: false      # Setting false will not push the image to remote repository
+  tagPolicy:
+    gitCommit: {}
   artifacts:
-    - image: team/sample
+    - image: sample
+      context: .
       docker:
         dockerfile: Dockerfile
 manifests:
