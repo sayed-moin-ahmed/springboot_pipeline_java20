@@ -14,7 +14,7 @@
 	<name>sample</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>20</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -74,8 +74,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>17</source>
-					<target>17</target>
+					<source>20</source>
+					<target>20</target>
 				</configuration>
 			</plugin>
 			<plugin>
