@@ -8,7 +8,7 @@ build:
   tagPolicy:
     gitCommit: {}
   artifacts:
-    - image: sample
+    - image: team/sample
       context: .
       docker:
         dockerfile: Dockerfile
