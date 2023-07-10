@@ -8,20 +8,29 @@ public class VirtualThreads {
 
     public void sampleVirtualThreads() throws InterruptedException {
         Runnable runnable = ()->System.out.println("Hello from a different thread");
-        Thread.Builder  builder =  Thread.ofVirtual().name("worker-",0);
-        Thread t1 = builder.start(runnable);
-        t1.join();
-        Thread t2 = builder.start(runnable);
-        t2.join();
-
-        getExecutorService();
+        ExecutorService executorService = getExecutorService();
+        executorService.execute(runnable);
+        executorService.execute(runnable);
+        executorService.submit(runnable);
     }
 
-  public ExecutorService getExecutorService(){
-                ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+    public ExecutorService getVirtualThreadExecutorService(){
+        ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
         return executorService;
-  }
+    }
 
+    public ExecutorService getExecutorService(){
+        ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+        return executorService;
+    }
+
+    class CustomThreadFactory implements ThreadFactory{
+
+        @Override
+        public Thread newThread(Runnable r) {
+            return  new Thread(r);
+        }
+    }
 
 
     public static void main(String[] args) throws InterruptedException {
